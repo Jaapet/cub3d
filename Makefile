@@ -6,7 +6,7 @@
 #    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/09 16:26:46 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/02/09 17:14:07 by ggualerz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ LDFLAGS    = -L${LIBFT_PATH} -lft
 # endif
 
 .c.o:
-	gcc $(CFLAGS) -c $< -o ${<:.c=.o}
+	clang $(CFLAGS) -c $< -o ${<:.c=.o}
 
 $(NAME): $(LIBFT) ${OBJECTS}
-	gcc $(CFLAGS) $(LDFLAGS) -o $(NAME) ${OBJECTS}
+	clang $(CFLAGS) $(LDFLAGS) -o $(NAME) ${OBJECTS}
 
 all: $(NAME)
 

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/09 16:40:19 by ggualerz         ###   ########.fr       */
+/*   Created: 2024/02/09 16:41:09 by ggualerz          #+#    #+#             */
+/*   Updated: 2024/02/09 18:27:12 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef PARSER_H
+# define PARSER_H
 
-int main(int ac, char **av)
-{
-	(void)av;
-	(void)ac;
-	return 0;
-}
+# include <fcntl.h>
+# include <stdbool.h>
+
+// Struct used by the parser, not reused after the parser
+typedef struct s_parser{
+	int fd;
+	size_t attributes_parsed;
+	char *color_top;
+	char *color_bottom;
+} t_parser;
+
+#endif
