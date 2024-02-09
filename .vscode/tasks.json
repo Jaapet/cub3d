@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Clean",
+            "type": "shell",
+            "command": "make -C /home/ggualerz/cub3d",
+            "group": "build"
+        }
+    ]
+}
