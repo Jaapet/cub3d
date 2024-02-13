@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:30:21 by ggualerz          #+#    #+#              #
-#    Updated: 2023/04/20 06:37:34 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/02/13 16:45:08 by ndesprez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ NAME	= libft.a
 OBJECTS	=  ${SOURCES:.c=.o}
 
 .c.o	:
-		gcc -Wall -Wextra -Werror -I "includes" -c $< -o ${<:.c=.o}
+		clang -Wall -Wextra -Werror -I "includes" -c $< -o ${<:.c=.o}
 
 ${NAME} : ${OBJECTS}
 		ar rc ${NAME} ${OBJECTS}
