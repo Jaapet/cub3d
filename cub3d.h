@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/13 18:08:16 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/14 19:04:10 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <math.h>
 # include "./mlx/mlx.h"
+# include "./libft/includes/libft.h"
 
 typedef char* t_path;
 typedef int*  t_color;
@@ -27,7 +29,6 @@ typedef struct s_pos{
 } t_pos;
 
 enum e_orientation{
-	
 	undefined,
 	n,
 	s,
@@ -40,29 +41,77 @@ typedef struct s_img
 	void	*img;
 }	t_img;
 
-typedef struct s_apin{
+typedef struct s_ray
+{
+	/*----x coordinate on the camera plane----*/
+	double	camerax;
 
+	/*----ray direction----*/
+	double	dirx;
+	double	diry;
+
+	/*----map box coordinates----*/
+	int		mapx;
+	int		mapy;
+
+	/*----distance from pos----*/
+	double	distx;
+	double	disty;
+
+	/*----perpendicular dist----*/
+	double	perpdist;
+
+	/*----delta steps----*/
+	double	deltax;
+	double	deltay;
+
+	/*----direction to step----*/
+	int		stepx;
+	int		stepy;
+
+	/*----wall hit----*/
+	bool	hit;//wall hit
+	bool	side;//NS = true, EW = false;
+}	t_ray;
+
+typedef struct s_player
+{
+	/*----position of the player----*/
+	double	posx;
+	double	posy;
+
+	/*----initial direction of the player----*/
+	double	dirx;
+	double	diry;
+
+	/*----vector of the camera plane----*/
+	double	planex;
+	double	planey;
+}	t_player;
+
+typedef struct s_apin
+{
 // INITIAL SETTINGS
-t_path	p_wall_n;
-t_path	p_wall_s;
-t_path	p_wall_e;
-t_path	p_wall_w;
+	t_path		p_wall_n;
+	t_path		p_wall_s;
+	t_path		p_wall_e;
+	t_path		p_wall_w;
 
-t_img	i_wall_n;
-t_img	i_wall_s;
-t_img	i_wall_e;
-t_img	i_wall_w;
+	t_img		i_wall_n;
+	t_img		i_wall_s;
+	t_img		i_wall_e;
+	t_img		i_wall_w;
 
-t_color	bottom;
-t_color	top;
+	t_color		bottom;
+	t_color		top;
 
-t_map	map; // each line end with \0, void char are whitespace
+	t_map		map; // each line end with \0, void char are whitespace
 
-int	start_orientation; //use enum
+	t_player	player;
+	t_ray		ray;
 
+	int			start_orientation; //use enum
 
-
-// 
-} t_apin;
+}	t_apin;
 
 #endif

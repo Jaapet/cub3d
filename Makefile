@@ -6,7 +6,7 @@
 #    By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/13 18:45:11 by ndesprez         ###   ########.fr        #
+#    Updated: 2024/02/14 17:58:13 by ndesprez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LDFLAGS    = -L${LIBFT_PATH} -L${MLX_PATH} -lft  -lmlx -lm -lbsd -lX11 -lXext
 	clang $(CFLAGS) -c $< -o ${<:.c=.o}
 
 $(NAME): $(LIBFT) ${MLX} ${OBJECTS}
-	clang $(CFLAGS) ${OBJECTS} $(LDFLAGS) -o $(NAME) 
+	clang $(CFLAGS) ${OBJECTS} $(LDFLAGS) -o $(NAME) ./libft/libft.a
 
 all: $(NAME)
 

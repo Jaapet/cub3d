@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 18:13:10 by ndesprez         ###   ########.fr       */
+/*   Created: 2024/02/14 18:11:15 by ndesprez          #+#    #+#             */
+/*   Updated: 2024/02/14 19:05:09 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	main(int ac, char **av)
+void	raycasting(t_apin *data)
 {
-	t_player	p;
-
-	(void)av;
-	(void)ac;
 	
-	return (0);
 }
