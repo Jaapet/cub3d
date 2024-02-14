@@ -6,11 +6,12 @@
 #    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/09 17:14:07 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/02/14 18:27:57 by ggualerz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES  = 	main.c
+SOURCES  = 	main.c \
+			parser/parser.c parser/parser_args.c parser/parser_attributes.c parser/parser_colors.c parser/parser_utils.c parser/parser_map.c
 
 NAME     = cub3d
 OBJECTS  = ${SOURCES:.c=.o}
@@ -35,7 +36,7 @@ LDFLAGS    = -L${LIBFT_PATH} -lft
 	clang $(CFLAGS) -c $< -o ${<:.c=.o}
 
 $(NAME): $(LIBFT) ${OBJECTS}
-	clang $(CFLAGS) $(LDFLAGS) -o $(NAME) ${OBJECTS}
+	clang $(CFLAGS) $(LDFLAGS) -o $(NAME) ${OBJECTS} ./libft/libft.a
 
 all: $(NAME)
 

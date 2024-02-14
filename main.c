@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/09 16:40:19 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:14:25 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int main(int ac, char **av)
 {
-	(void)av;
-	(void)ac;
+	t_apin data;
+
+	ft_bzero(&data, sizeof(data));
+	if(ft_parser(ac, av, &data) == false)
+		return(1);
 	return 0;
 }

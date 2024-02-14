@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 19:43:24 by ggualerz          #+#    #+#             */
-/*   Updated: 2023/06/14 17:21:17 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:34:29 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

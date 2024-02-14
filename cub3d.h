@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/09 19:01:41 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:12:59 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
-# include "./libft/includes/libft.h"
-
 typedef char* t_path;
 typedef int  t_color;
 typedef char** t_map;
@@ -66,5 +64,9 @@ int	start_orientation; //use enum e_orientation
 
 // 
 } t_apin;
+# include "./parser/parser.h"
+# include "./libft/includes/libft.h"
+//PARSER
+bool ft_parser(int ac, char **av, t_apin *data);
 
 #endif
