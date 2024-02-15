@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 19:04:10 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/15 01:33:52 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 # define CUB3D_H
 
 # include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
 # include "./mlx/mlx.h"
 # include "./libft/includes/libft.h"
+
+# define WIDTH 640
+# define HEIGHT 480
 
 typedef char* t_path;
 typedef int*  t_color;
@@ -113,5 +117,9 @@ typedef struct s_apin
 	int			start_orientation; //use enum
 
 }	t_apin;
+
+/*----RAYCASTING----*/
+void	init_ray(t_apin *data, int x);
+
 
 #endif

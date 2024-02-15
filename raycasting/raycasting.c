@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:11:15 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/02/14 19:05:09 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/15 01:35:22 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 
 void	raycasting(t_apin *data)
 {
-	
+	int	x;
+
+	x = 0;
+	while (x < WIDTH)
+	{
+		init_ray(data, x);
+		x++;
+	}
 }
