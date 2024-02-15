@@ -6,12 +6,12 @@
 #    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/14 18:27:57 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/02/15 16:40:18 by ggualerz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCES  = 	main.c \
-			parser/parser.c parser/parser_args.c parser/parser_attributes.c parser/parser_colors.c parser/parser_utils.c parser/parser_map.c
+			parser/parser.c parser/parser_args.c parser/parser_attributes.c parser/parser_colors.c parser/parser_utils.c parser/parser_utils_lst.c parser/parser_map.c
 
 NAME     = cub3d
 OBJECTS  = ${SOURCES:.c=.o}
@@ -19,7 +19,7 @@ OBJECTS  = ${SOURCES:.c=.o}
 LIBFT_PATH = ./libft
 LIBFT      = $(LIBFT_PATH)/libft.a
 
-CFLAGS     = -Wall -Wextra -Werror -g -fdiagnostics-color=always 
+CFLAGS     = -Wall -Wextra -Werror -g
 LDFLAGS    = -L${LIBFT_PATH} -lft
 
 # READLINE_INSTALLED := $(shell brew list --formula | grep -q '^readline$$' && echo 1)

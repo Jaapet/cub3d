@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:23:37 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 18:10:42 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:55:05 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static bool ft_valid_attrib(t_parser *parser, t_apin *data, char *cur_attrib, ch
 		if(ft_check_get_color(parser, data, cur_attrib, gnl_str) == true)
 			return(true);
 		else
-			return(perror("invalid color"), false);
+			return(ft_perror("invalid color"), false);
 	}
 	else
 	{
@@ -51,7 +51,7 @@ static bool ft_valid_attrib(t_parser *parser, t_apin *data, char *cur_attrib, ch
 			return(true);
 		}
 		else
-			return(perror("invalid texture file"), false);
+			return(ft_perror("invalid texture file"), false);
 	}
 }
 /*Search the current attribute of the GNL line, if a non duplicate attribute is found put a flag to true and return true, else return false*/
@@ -103,13 +103,14 @@ bool ft_parser_attributes(t_parser *parser_data, t_apin *data)
 	parser_data->attributes_parsed = 0;
 	while(not_started || ft_is_begin_of_map(temp_str) != true)
 	{
-		free(temp_str);
+		if(not_started == false)
+			free(temp_str);
 		not_started = false;
 		temp_str = get_next_line(parser_data->fd);
 		if (temp_str == NULL)
-			return(perror("file ended unexpectedly"), false);
+			return(ft_perror("file ended unexpectedly"), false);
 		if (ft_attrib_process(parser_data, data, temp_str) == false)
-			return(free(temp_str), perror("invalid attribute on map or invalid begin of map\n"), false);	
+			return(free(temp_str), ft_perror("invalid attribute on map or invalid begin of map\n"), false);	
 	}
 	if (parser_data->attributes_parsed != 6)
 	{
@@ -117,7 +118,7 @@ bool ft_parser_attributes(t_parser *parser_data, t_apin *data)
 			free(parser_data->color_bottom);
 		if (parser_data->color_top != NULL)
 			free(parser_data->color_top);
-		return(perror("invalid .cub file\n"), false);
+		return(ft_perror("invalid .cub file\n"), false);
 	}
 	parser_data->last_gnl = temp_str;
 	return(true);

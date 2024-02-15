@@ -6,47 +6,19 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:09:58 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 18:44:28 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:56:30 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-/*map_lst functions*/
-t_map_lst	*ft_maplstnew(char *content)
+
+/*Print text in fd 2*/
+void ft_perror(char *str)
 {
-	t_map_lst	*out_list;
-
-	out_list = malloc(sizeof(t_map_lst));
-	if (out_list == NULL)
-		return (NULL);
-	out_list->content = content;
-	out_list->next = NULL;
-	return (out_list);
+	write(2, str, ft_strlen(str));
+	write(2, &"\n", 1);
 }
-
-t_map_lst	*ft_maplstlast(t_map_lst *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-	{
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-void	ft_maplstadd_back(t_map_lst **lst, t_map_lst *new)
-{
-	if (lst)
-	{
-		if (*lst)
-			(ft_maplstlast(*lst))->next = new;
-		else
-			*lst = new;
-	}
-}
-
 /*Check if the current line is the beginining of the map 
 (it only contain WS and 1 char) return true if its the begining*/
 bool ft_is_begin_of_map(char *gnl_str)
@@ -61,4 +33,30 @@ bool ft_is_begin_of_map(char *gnl_str)
 		i++;
 	}
 	return (true);
+}
+/*modified strncpy for adding white space on empty char, end the str with a ws and start with a ws*/
+size_t	ft_strlcpy_map(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	dst[0] = ' ';
+	if (size > 0)
+	{
+		while ((src[i] && i < size - 1) && size != 0)
+		{
+			if (src[i] != '\n')
+				dst[i + 1] = src[i];
+			else
+				dst[i + 1] = ' ';
+			i++;
+		}
+		while (i < size - 1)
+		{
+			dst[i + 1] = ' ';
+			i++;
+		}
+		dst[i + 1] = 0;
+	}
+	return (ft_strlen(src));
 }

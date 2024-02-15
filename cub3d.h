@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 17:12:59 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:50:25 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@ typedef struct s_pos{
 	int	x;
 	int y;
 } t_pos;
-
-enum e_orientation{
-	
-	undefined,
-	n,
-	s,
-	e,
-	w
-};
 
 typedef struct s_img
 {
@@ -58,7 +49,7 @@ t_map	map; // each line end with \0, void is whitespace
 size_t	height;
 size_t	width;
 
-int	start_orientation; //use enum e_orientation
+char	start_ori; //N S E W
 
 
 

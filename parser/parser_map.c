@@ -6,31 +6,120 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:16:35 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 19:34:53 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:54:21 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-static bool ft_get_player_orient(t_apin *data, t_parser *parser)
+static bool ft_is_player(char c)
 {
-	PARCOURIR LE TABLEAU 2D
+	if(c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (true);
+	return(false);
+}
+static bool ft_is_player_floor_wall(char c)
+{
+	if(c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == '1')
+		return (true);
+	return(false);
+}
+static bool ft_map_illegal_char(t_apin *data)
+{
+		size_t i;
+	size_t j;
+
+	i = 0;
+	j = 0;
+	while (data->map[j])
+	{
+		while(data->map[j][i])
+		{
+			if(!(ft_is_player_floor_wall(data->map[j][i]) || data->map[j][i] == ' '))
+				return(ft_perror("illegal char on the map"),false);
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return(true);
+}
+static bool ft_map_is_closed(t_apin *data)
+{
+	size_t i;
+	size_t j;
+
+	i = 0;
+	j = 0;
+	while (data->map[j])
+	{
+		while(data->map[j][i])
+		{
+			if(ft_is_player(data->map[j][i]) || data->map[j][i] == '0')
+			{
+				if(ft_is_player_floor_wall(data->map[j][i - 1]) == false)
+					return(false);
+				if(ft_is_player_floor_wall(data->map[j][i + 1]) == false)
+					return(false);
+				if(ft_is_player_floor_wall(data->map[j - 1][i]) == false)
+					return(false);
+				if(ft_is_player_floor_wall(data->map[j + 1][i]) == false)
+					return(false);
+			}				
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return(true);
+}
+static bool ft_get_player_ori(t_apin *data)
+{
+	size_t i;
+	size_t j;
+
+	data->start_ori = '\0';
+	i = 0;
+	j = 0;
+	while (data->map[j])
+	{
+		while(data->map[j][i])
+		{
+			if(ft_is_player(data->map[j][i]))
+			{
+				if(data->start_ori == '\0')
+					data->start_ori = data->map[j][i];
+				else
+					return(ft_perror("duplicated player"), false);
+			}				
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	if (data->start_ori == '\0')
+		return(ft_perror("no player found"), false);
+	return(true);
 }
 static void ft_map_build(t_apin *data, t_parser *parser)
 {
 	t_map_lst *cur_lst;
 	size_t i;
 
-	data->map = ft_calloc(data->height + 1, sizeof (char*));
+	data->map = ft_calloc(data->height + 2, sizeof (char*));
+	data->map[0] = ft_calloc(data->width + 2, sizeof(char));
+	ft_memset(data->map[0], ' ', data->width + 1);
 	cur_lst = parser->map_lst;
-	i = 0;
-	while(cur_lst->next != NULL)
+	i = 1;
+	while(cur_lst != NULL)
 	{
 		data->map[i] = ft_calloc(data->width + 1, sizeof(char));
-		ft_strlcpy(data->map[i], cur_lst->content, ft_strlen(cur_lst->content));
+		ft_strlcpy_map(data->map[i], cur_lst->content, data->width + 1);
 		i++;
 		cur_lst = cur_lst->next;
 	}
-	BUILD MAP AVEC DES ESPACE
+	data->map[i] = ft_calloc(data->width + 2, sizeof(char));
+	ft_memset(data->map[i], ' ', data->width + 1);
+	ft_mapls_free(parser->map_lst);	
 }
 
 static void ft_map_get_width_height(t_apin *data, t_parser *parser)
@@ -77,10 +166,15 @@ bool ft_parser_map(t_apin *data, t_parser *parser)
 	ft_map_to_lst(parser);
 	ft_map_get_width_height(data, parser);
 	ft_map_build(data, parser);
-
 	for(size_t i = 0; data->map[i]; i++)
 	{
-		printf("%s\n", data->map[i]);
+		printf("|%s|\n", data->map[i]);
 	}
+	if(ft_get_player_ori(data) == false)
+		return(false);
+	if(ft_map_illegal_char(data) == false)
+		return(false);
+	if(ft_map_is_closed(data) == false)
+		return(ft_perror("map not closed"), false);
 	return (true);
 }

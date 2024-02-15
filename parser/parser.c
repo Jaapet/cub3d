@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:42:33 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 18:27:22 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:58:15 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ bool ft_parser(int ac, char **av, t_apin *data)
 		return(false);
 	if(ft_parser_map(data, &parser_data) == false)
 		return(false);
+	
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:41:09 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 18:45:15 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:53:39 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,15 @@ typedef struct s_parser{
 //Colors
 void ft_convert_rgb_int(t_parser *parser, t_apin *data, char *gnl_str);
 bool ft_check_get_color(t_parser *parser, t_apin *data, char *cur_attrib, char *gnl_str);
-//Utils
+//Utils lst
 t_map_lst	*ft_maplstnew(char *content);
 t_map_lst	*ft_maplstlast(t_map_lst *lst);
 void	ft_maplstadd_back(t_map_lst **lst, t_map_lst *new);
+void	ft_mapls_free(t_map_lst *lst);
+//Utils
 bool ft_is_begin_of_map(char *gnl_str);
+size_t	ft_strlcpy_map(char *dst, const char *src, size_t size);
+void ft_perror(char *str);
 
 
 bool ft_parser_args(int ac, char** av, t_parser *parser_data);
