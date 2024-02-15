@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/15 01:33:52 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:16:19 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define CUB3D_H
 
 # include <stdlib.h>
-# include <stdbool.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
+# include <stdbool.h>
 # include "./mlx/mlx.h"
 # include "./libft/includes/libft.h"
 
@@ -31,14 +31,6 @@ typedef struct s_pos{
 	int	x;
 	int y;
 } t_pos;
-
-enum e_orientation{
-	undefined,
-	n,
-	s,
-	e,
-	w
-};
 
 typedef struct s_img
 {
@@ -76,6 +68,10 @@ typedef struct s_ray
 	/*----wall hit----*/
 	bool	hit;//wall hit
 	bool	side;//NS = true, EW = false;
+
+	/*----draw info----*/
+	int		start;
+	int		end;
 }	t_ray;
 
 typedef struct s_player
@@ -114,12 +110,13 @@ typedef struct s_apin
 	t_player	player;
 	t_ray		ray;
 
-	int			start_orientation; //use enum
+	char		start_orientation;
 
 }	t_apin;
 
 /*----RAYCASTING----*/
 void	init_ray(t_apin *data, int x);
+void	init_dda(t_apin *data);
 
 
 #endif

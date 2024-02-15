@@ -8,6 +8,7 @@
 		"history.h": "c",
 		"philo.h": "c",
 		"pthread.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"numbers": "c"
 	}
 }
