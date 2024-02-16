@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/09 16:26:46 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/02/14 17:58:13 by ndesprez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,32 +18,30 @@ OBJECTS  = ${SOURCES:.c=.o}
 LIBFT_PATH = ./libft
 LIBFT      = $(LIBFT_PATH)/libft.a
 
+MLX_PATH = ./mlx
+MLX      = $(MLX_PATH)/libmlx.a
+
 CFLAGS     = -Wall -Wextra -Werror -g -fdiagnostics-color=always 
-LDFLAGS    = -L${LIBFT_PATH} -lft
+LDFLAGS    = -L${LIBFT_PATH} -L${MLX_PATH} -lft  -lmlx -lm -lbsd -lX11 -lXext
 
-# READLINE_INSTALLED := $(shell brew list --formula | grep -q '^readline$$' && echo 1)
-
-# ifeq ($(READLINE_INSTALLED),1)
-#     # Readline is installed
-#     # Add necessary flags or commands here
-# else
-#     # Readline is not installed
-#     $(error "Readline is not installed. Please install it using Homebrew.")
-# endif
 
 .c.o:
-	gcc $(CFLAGS) -c $< -o ${<:.c=.o}
+	clang $(CFLAGS) -c $< -o ${<:.c=.o}
 
-$(NAME): $(LIBFT) ${OBJECTS}
-	gcc $(CFLAGS) $(LDFLAGS) -o $(NAME) ${OBJECTS}
+$(NAME): $(LIBFT) ${MLX} ${OBJECTS}
+	clang $(CFLAGS) ${OBJECTS} $(LDFLAGS) -o $(NAME) ./libft/libft.a
 
 all: $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
 
+$(MLX):
+	make -C $(MLX_PATH) all
+
 clean:
 	make -C $(LIBFT_PATH) clean
+	make -C $(MLX_PATH) clean
 	rm -f ${OBJECTS}
 
 fclean: clean
