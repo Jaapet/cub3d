@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:11:15 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/02/15 18:28:34 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:43:43 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	raycasting(t_apin *data)
 		init_dda(data);
 		dda(data);
 		get_height(data);
+		
 		x++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/16 15:07:18 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:32:02 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,13 @@ typedef struct s_player
 	double	planey;
 }	t_player;
 
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_img	img;
+}	t_mlx;
+
 typedef struct s_apin
 {
 // INITIAL SETTINGS
@@ -106,20 +113,22 @@ typedef struct s_apin
 	t_color		top;
 
 	t_map		map; // each line end with \0, void char are whitespace
-  size_t	height;
-  size_t	width;
+	size_t		height;
+	size_t		width;
 
-  char	start_ori; //N S E W
+	char		start_ori; //N S E W
 	t_player	player;
 	t_ray		ray;
+	t_mlx		mlx;
 
-	char		start_orientation;
+	
 
 }	t_apin;
 
 /*----RAYCASTING----*/
 void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
+void	raycasting(t_apin *data);
 
 # include "./parser/parser.h"
 //PARSER
