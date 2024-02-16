@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/15 18:16:19 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:07:18 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ typedef struct s_apin
 void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
 
-} t_apin;
 # include "./parser/parser.h"
 //PARSER
 bool ft_parser(int ac, char **av, t_apin *data);
