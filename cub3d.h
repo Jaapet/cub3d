@@ -25,7 +25,7 @@
 # define HEIGHT 480
 
 typedef char* t_path;
-typedef int*  t_color;
+typedef int  t_color;
 typedef char** t_map;
 typedef struct s_pos{
 	int	x;
@@ -106,7 +106,10 @@ typedef struct s_apin
 	t_color		top;
 
 	t_map		map; // each line end with \0, void char are whitespace
+  size_t	height;
+  size_t	width;
 
+  char	start_ori; //N S E W
 	t_player	player;
 	t_ray		ray;
 
@@ -118,5 +121,9 @@ typedef struct s_apin
 void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
 
+} t_apin;
+# include "./parser/parser.h"
+//PARSER
+bool ft_parser(int ac, char **av, t_apin *data);
 
 #endif

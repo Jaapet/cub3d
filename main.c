@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/14 18:13:10 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:12:08 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	main(int ac, char **av)
 {
-	t_player	p;
+	t_apin data;
 
-	(void)av;
-	(void)ac;
-	
+	ft_bzero(&data, sizeof(t_apin));
+	if(ft_parser(ac, av, &data) == false)
+		return(1);
+	t_player	p;
 	return (0);
 }

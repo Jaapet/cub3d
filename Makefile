@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES  = 	main.c
+SOURCES  = 	main.c \
+			parser/parser.c parser/parser_args.c parser/parser_attributes.c parser/parser_colors.c parser/parser_utils.c parser/parser_utils_lst.c parser/parser_map.c
 
 NAME     = cub3d
 OBJECTS  = ${SOURCES:.c=.o}

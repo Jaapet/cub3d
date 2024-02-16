@@ -2,11 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug philo",
+            "name": "Debug cub3d",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/cub3d",
-            "args": ["map.cub"],
+            "args": ["test.cub"],
             "cwd": "${workspaceFolder}",
             "environment": [ 
 				{ "name": "LOGNAME", "value": "ggualerz" },
