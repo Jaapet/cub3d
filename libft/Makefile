@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:30:21 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/09 17:14:22 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/02/13 16:45:08 by ndesprez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
