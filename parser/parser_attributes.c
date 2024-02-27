@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:23:37 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/15 18:55:05 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:15:46 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static bool ft_check_attrib(char *str_gnl, char *attrib, bool *attrib_flag)
 {
 	if(*attrib_flag == true)
 		return(false);
-	if(ft_strncmp(str_gnl, attrib, ft_strlen(attrib) + 1))
+	if(ft_strncmp(str_gnl, attrib, ft_strlen(attrib)) == 0)
 	{
 		*attrib_flag = true;
 		return(true);
@@ -72,7 +72,7 @@ static bool ft_attrib_process(t_parser *parser_data, t_apin *data, char *str)
 	char **current_attribute;
 
 	current_attribute = NULL;
-	if (str[0] == '\0' || ft_is_begin_of_map(str))
+	if (str[0] == '\n' || str[0] == '\0' || ft_is_begin_of_map(str))
 		return(true);
 	else if (ft_check_attrib(str, "NO ", &parser_data->NO_attrib))
 		current_attribute = &data->p_wall_n;
@@ -114,11 +114,8 @@ bool ft_parser_attributes(t_parser *parser_data, t_apin *data)
 	}
 	if (parser_data->attributes_parsed != 6)
 	{
-		if (parser_data->color_bottom != NULL)
-			free(parser_data->color_bottom);
-		if (parser_data->color_top != NULL)
-			free(parser_data->color_top);
-		return(ft_perror("invalid .cub file\n"), false);
+		ft_perror("Invalid number of args\n");
+		exit(1);
 	}
 	parser_data->last_gnl = temp_str;
 	return(true);

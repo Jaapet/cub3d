@@ -6,7 +6,7 @@
 #    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/16 15:31:45 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/02/27 18:13:38 by ggualerz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT      = $(LIBFT_PATH)/libft.a
 MLX_PATH = ./mlx
 MLX      = $(MLX_PATH)/libmlx.a
 
-CFLAGS     = -Wall -Wextra -Werror -g -fdiagnostics-color=always 
+CFLAGS     = -Wall -Wextra -Werror -g -fsanitize=address
 LDFLAGS    = -L${LIBFT_PATH} -L${MLX_PATH} -lft  -lmlx -lm -lbsd -lX11 -lXext
 
 
