@@ -6,15 +6,13 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:28:30 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/02/16 16:43:33 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:58:39 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-/*
-void	render_raycasting(t_apin *data)
+
+int	get_pixel(t_apin *data, int x)
 {
-	ft_bzero(&data->ray, sizeof(t_ray));
-	raycasting(data);
 	
-}*/
+}

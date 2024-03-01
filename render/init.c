@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 00:11:56 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/03/01 17:50:52 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:07:38 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,4 @@ void	init_dda(t_apin *data)
 		data->ray.stepy = 1;
 		data->ray.disty = (data->ray.mapy + 1 - data->player.posy) * data->ray.deltay;
 	}
-}
-
-void	init_mlx(t_apin *data)
-{
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "!cub3d");
-	
 }

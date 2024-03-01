@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:11:15 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/03/01 18:54:06 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:58:31 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	set_column(t_apin *data, int x)
 	i = data->ray.start;
 	while (i <= data->ray.end)
 	{
-		set_pixel(data->img, x, i, 66);
+		set_pixel(data->img, x, i, get_pixel(data, x));
 		i++;
 	}
 }

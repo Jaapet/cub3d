@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/01 18:03:52 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:25:51 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ typedef struct s_apin
 	t_path		p_wall_e;
 	t_path		p_wall_w;
 
-	t_img		i_wall_n;
-	t_img		i_wall_s;
-	t_img		i_wall_e;
-	t_img		i_wall_w;
+	t_img		*i_wall_n;
+	t_img		*i_wall_s;
+	t_img		*i_wall_e;
+	t_img		*i_wall_w;
 
 	t_color		bottom;
 	t_color		top;
@@ -132,6 +132,7 @@ typedef struct s_apin
 void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
 void	raycasting(t_apin *data);
+int		get_pixel(t_apin *data, int x);
 
 # include "./parser/parser.h"
 //PARSER
