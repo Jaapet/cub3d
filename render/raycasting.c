@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:11:15 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/02/16 16:43:43 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:54:06 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,26 @@ static void	get_height(t_apin *data)
 		data->ray.end = HEIGHT - 1;
 }
 
+void	set_pixel(t_img *img, int x, int y, int color)
+{
+	char	*pixel;
+
+	pixel = img->add + (y * img->line_len + x * (img->bpp / 8));
+	*(unsigned int *)pixel = color;
+}
+
+void	set_column(t_apin *data, int x)
+{
+	int	i;
+
+	i = data->ray.start;
+	while (i <= data->ray.end)
+	{
+		set_pixel(data->img, x, i, 66);
+		i++;
+	}
+}
+
 void	raycasting(t_apin *data)
 {
 	int	x;
@@ -61,7 +81,7 @@ void	raycasting(t_apin *data)
 		init_dda(data);
 		dda(data);
 		get_height(data);
-		
+		set_column(data, x);
 		x++;
 	}
 }

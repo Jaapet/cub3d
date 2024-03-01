@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 00:11:56 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/02/16 16:21:12 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:50:52 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ void	init_player_dir(t_apin *data)
 
 	posneg1 = 1;
 	posneg2 = 1;
-	if (data->start_orientation == 'N' || data->start_orientation == 'W')
+	if (data->start_ori == 'N' || data->start_ori == 'W')
 		posneg1 = -1;
-	else if (data->start_orientation == 'S')
+	else if (data->start_ori == 'S')
 		posneg2 = -1;
-	if (data->start_orientation == 'N' || data->start_orientation == 'S')
+	if (data->start_ori == 'N' || data->start_ori == 'S')
 	{
 		data->player.dirx = 0;
 		data->player.diry = 1 * posneg1;
 		data->player.planex = 0.66 * posneg2;
 		data->player.planey = 0;
 	}
-	else if (data->start_orientation == 'E' || data->start_orientation == 'W')
+	else if (data->start_ori == 'E' || data->start_ori == 'W')
 	{
 		data->player.dirx = 1 * posneg1;
 		data->player.diry = 0;
@@ -77,7 +77,7 @@ void	init_dda(t_apin *data)
 
 void	init_mlx(t_apin *data)
 {
-	data->mlx.mlx = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.mlx, WIDTH, HEIGHT, "!cub3d");
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "!cub3d");
 	
 }

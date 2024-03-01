@@ -6,11 +6,32 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/29 22:49:49 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:33:56 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	game_loop(t_apin *data)
+{
+	raycasting(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	
+}
+
+play_mlx(t_apin *data)
+{
+	t_img temp;
+
+	temp.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "!cub3d");
+	temp.add = mlx_get_data_addr(&temp.img, &temp.bpp, &temp.line_len, &temp.line_num);
+	temp.width = WIDTH;
+	temp.height = HEIGHT;
+	data->img = &temp;
+	mlx_loop_hook(data->mlx, &game_loop, data);
+	//init_texture
+}
 
 int	main(int ac, char **av)
 {
@@ -23,23 +44,8 @@ int	main(int ac, char **av)
 	(void)p;
 
 
-	data.mlx.mlx = mlx_init();
+	data.mlx = mlx_init();
 	init_player_dir();
-	play_mlx();
+	play_mlx(&data);
 	return (0);
-}
-
-play_mlx()
-{
-	t_img t;
-
-	window = new window
-	img = new img //void*
-	t.add = mlx_get_data_addr //char*
-	t.win
-	t.height
-	data.img = t
-	
-	init_texture
-	
 }

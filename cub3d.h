@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/16 16:32:02 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:03:52 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef struct s_pos{
 typedef struct s_img
 {
 	void	*img;
+	char	*add;
+	int		bpp;
+	int		line_len;
+	int		line_num;
+	int		width;
+	int		height;
 }	t_img;
 
 typedef struct s_ray
@@ -89,13 +95,6 @@ typedef struct s_player
 	double	planey;
 }	t_player;
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	t_img	img;
-}	t_mlx;
-
 typedef struct s_apin
 {
 // INITIAL SETTINGS
@@ -119,7 +118,11 @@ typedef struct s_apin
 	char		start_ori; //N S E W
 	t_player	player;
 	t_ray		ray;
-	t_mlx		mlx;
+	
+	//mlx
+	void	*mlx;
+	void	*win;
+	t_img	*img;
 
 	
 
