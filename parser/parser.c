@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:42:33 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/27 17:09:45 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:20:45 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ This func will no free the t_apin struct or exit the program*/
 bool ft_parser(int ac, char **av, t_apin *data)
 {
 	t_parser parser_data;
-	
+	//MANQUE le .CUB check, et les whitespace
 	ft_bzero(&parser_data, sizeof(parser_data));
 	if(ft_parser_args(ac, av, &parser_data) == false)
 		return(false);
