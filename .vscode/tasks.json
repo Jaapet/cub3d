@@ -4,7 +4,7 @@
         {
             "label": "Build and Clean",
             "type": "shell",
-            "command": "make -C /home/ggualerz/cub3d",
+            "command": "make -C /home/ndesprez/Documents/cursus/cub3d",
             "group": "build"
         }
     ]

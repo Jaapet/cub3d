@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/01 22:35:29 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:34:17 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct s_apin
 }	t_apin;
 
 /*----RAYCASTING----*/
+void	init_player_dir(t_apin *data);
 void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
 void	raycasting(t_apin *data);
