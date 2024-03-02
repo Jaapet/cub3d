@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/16 15:07:18 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:35:29 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef struct s_pos{
 typedef struct s_img
 {
 	void	*img;
+	char	*add;
+	int		bpp;
+	int		line_len;
+	int		line_num;
+	int		width;
+	int		height;
 }	t_img;
 
 typedef struct s_ray
@@ -72,6 +78,9 @@ typedef struct s_ray
 	/*----draw info----*/
 	int		start;
 	int		end;
+
+	/*----pos x sur l'unité de mur----*/
+	double	wall_x;
 }	t_ray;
 
 typedef struct s_player
@@ -97,29 +106,36 @@ typedef struct s_apin
 	t_path		p_wall_e;
 	t_path		p_wall_w;
 
-	t_img		i_wall_n;
-	t_img		i_wall_s;
-	t_img		i_wall_e;
-	t_img		i_wall_w;
+	t_img		*i_wall_n;
+	t_img		*i_wall_s;
+	t_img		*i_wall_e;
+	t_img		*i_wall_w;
 
 	t_color		bottom;
 	t_color		top;
 
 	t_map		map; // each line end with \0, void char are whitespace
-  size_t	height;
-  size_t	width;
+	size_t		height;
+	size_t		width;
 
-  char	start_ori; //N S E W
+	char		start_ori; //N S E W
 	t_player	player;
 	t_ray		ray;
+	
+	//mlx
+	void	*mlx;
+	void	*win;
+	t_img	*img;
 
-	char		start_orientation;
+	
 
 }	t_apin;
 
 /*----RAYCASTING----*/
 void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
+void	raycasting(t_apin *data);
+int		get_pixel(t_img *img, int x, int y);
 
 # include "./parser/parser.h"
 //PARSER
