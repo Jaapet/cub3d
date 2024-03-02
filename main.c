@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
 /*   Updated: 2024/03/02 18:58:21 by ndesprez         ###   ########.fr       */
@@ -57,7 +57,6 @@ int	main(int ac, char **av)
 	ft_bzero(&data, sizeof(t_apin));
 	if(ft_parser(ac, av, &data) == false)
 		exit(1);
-
 	data.mlx = mlx_init();
 	init_player_dir(&data);
 	init_texture(&data);
