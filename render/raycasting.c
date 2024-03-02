@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:11:15 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/03/01 18:58:31 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:57:58 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ static void	get_height(t_apin *data)
 		data->ray.perpdist = data->ray.distx - data->ray.deltax;
 	else
 		data->ray.perpdist = data->ray.disty - data->ray.deltax;
+	if (data->ray.side)
+        data->ray.wall_x = data->player.posx + data->ray.perpdist * data->ray.dirx;
+    else
+        data->ray.wall_x = data->player.posy + data->ray.perpdist * data->ray.diry;
+    data->ray.wall_x -= floor(data->ray.wall_x);
 	height = (int)(HEIGHT / data->ray.perpdist);
 	data->ray.start = height / 2 * -1 + HEIGHT / 2;
 	data->ray.end = height / 2 + HEIGHT / 2;
@@ -60,13 +65,22 @@ void	set_pixel(t_img *img, int x, int y, int color)
 
 void	set_column(t_apin *data, int x)
 {
-	int	i;
+	int	y;
+	int	step;
+	int	y_texture;
 
-	i = data->ray.start;
-	while (i <= data->ray.end)
+	y = data->ray.start;
+	y_texture = 0;
+	step = (double)((double)data->i_wall_n->height / (double)(data->ray.end - data->ray.start));
+	if (data->ray.start < 0)
+		y_texture = step * y * -1;
+	while (y <= data->ray.end)
 	{
-		set_pixel(data->img, x, i, get_pixel(data, x));
-		i++;
+		if (y >= HEIGHT - 1)
+			break ;
+		set_pixel(data->img, x, y, get_pixel(data->i_wall_n, data->ray.wall_x * data->i_wall_n->width, y_texture));
+		y++;
+		y_texture += step;
 	}
 }
 
