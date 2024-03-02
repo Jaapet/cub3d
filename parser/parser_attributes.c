@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:23:37 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/27 18:15:46 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:22:39 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static char *ft_get_path_attribute(char *str)
 
 	char *out_str;
 	i = 0;
+	while(str[i] == ' ')
+		i++;
 	while(str[i] != ' ')
 		i++;
 	while(str[i] == ' ')
@@ -57,9 +59,14 @@ static bool ft_valid_attrib(t_parser *parser, t_apin *data, char *cur_attrib, ch
 /*Search the current attribute of the GNL line, if a non duplicate attribute is found put a flag to true and return true, else return false*/
 static bool ft_check_attrib(char *str_gnl, char *attrib, bool *attrib_flag)
 {
+	size_t i;
+	
 	if(*attrib_flag == true)
 		return(false);
-	if(ft_strncmp(str_gnl, attrib, ft_strlen(attrib)) == 0)
+	i = 0;
+	while(str_gnl[i] == ' ')
+		i++;
+	if(ft_strncmp(str_gnl + i, attrib, ft_strlen(attrib)) == 0)
 	{
 		*attrib_flag = true;
 		return(true);
