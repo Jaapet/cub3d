@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/01 19:26:34 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:07:13 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,13 @@ int	main(int ac, char **av)
 
 	ft_bzero(&data, sizeof(t_apin));
 	if(ft_parser(ac, av, &data) == false)
-		return(1);
+		exit(1);
 	t_player	p;
 	(void)p;
-
-
 	data.mlx = mlx_init();
 	init_player_dir();
 	init_texture(&data);
 	play_mlx(&data);
+	exit(0);
 	return (0);
 }
