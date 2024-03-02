@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:16:35 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/15 18:54:21 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:23:17 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ static void ft_map_build(t_apin *data, t_parser *parser)
 	i = 1;
 	while(cur_lst != NULL)
 	{
-		data->map[i] = ft_calloc(data->width + 1, sizeof(char));
+		data->map[i] = ft_calloc(data->width + 2, sizeof(char));
 		ft_strlcpy_map(data->map[i], cur_lst->content, data->width + 1);
 		i++;
 		cur_lst = cur_lst->next;

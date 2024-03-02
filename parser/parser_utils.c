@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:09:58 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/15 18:56:30 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:20:46 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ bool ft_is_begin_of_map(char *gnl_str)
 			return (false);
 		i++;
 	}
+	if(gnl_str[0] == '\n')
+		return (false);
 	return (true);
 }
 /*modified strncpy for adding white space on empty char, end the str with a ws and start with a ws*/
