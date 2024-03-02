@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/02 18:13:08 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:58:21 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	game_loop(t_apin *data)
 	return (0);
 }
 
-void	play_mlx(t_apin *data /*,t_img *temp*/)
+void	play_mlx(t_apin *data)
 {
 	t_img temp;
 
@@ -57,11 +57,6 @@ int	main(int ac, char **av)
 	ft_bzero(&data, sizeof(t_apin));
 	if(ft_parser(ac, av, &data) == false)
 		exit(1);
-
-	if(ac == 2) //DEBUG
-		exit(0);
-	data.player.posx = 2.5;
-	data.player.posy = 2.5;
 	data.mlx = mlx_init();
 	init_player_dir(&data);
 	init_texture(&data);
