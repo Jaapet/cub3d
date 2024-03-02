@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:16:35 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/02 18:52:43 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/02 19:02:18 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static void ft_get_player_pos(t_apin *data)
 		{
 			if(ft_is_player(data->map[j][i]))
 			{
-				data->player.posx = i;
-				data->player.posy = j;
+				data->player.posx = i + 0.5;
+				data->player.posy = j + 0.5;
 				break;
 			}
 			i++;
