@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/02 17:41:14 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:13:08 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	init_texture(t_apin *data)
 int	main(int ac, char **av)
 {
 	t_apin data;
-	// t_img temp;
 
 	ft_bzero(&data, sizeof(t_apin));
 	if(ft_parser(ac, av, &data) == false)
 		exit(1);
 
-
+	if(ac == 2) //DEBUG
+		exit(0);
 	data.player.posx = 2.5;
 	data.player.posy = 2.5;
 	data.mlx = mlx_init();

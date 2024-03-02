@@ -6,7 +6,7 @@
 /*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:16:35 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/27 16:23:17 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:52:43 by ggualerz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,29 @@ static bool ft_map_illegal_char(t_apin *data)
 		j++;
 	}
 	return(true);
+}
+static void ft_get_player_pos(t_apin *data)
+{
+	size_t i;
+	size_t j;
+
+	i = 0;
+	j = 0;
+	while (data->map[j])
+	{
+		while(data->map[j][i])
+		{
+			if(ft_is_player(data->map[j][i]))
+			{
+				data->player.posx = i;
+				data->player.posy = j;
+				break;
+			}
+			i++;
+		}
+		i = 0;
+		j++;
+	}
 }
 static bool ft_map_is_closed(t_apin *data)
 {
@@ -176,5 +199,6 @@ bool ft_parser_map(t_apin *data, t_parser *parser)
 		return(false);
 	if(ft_map_is_closed(data) == false)
 		return(ft_perror("map not closed"), false);
+	ft_get_player_pos(data);
 	return (true);
 }
