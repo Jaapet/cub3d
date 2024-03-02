@@ -6,13 +6,13 @@
 #    By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/02/27 18:13:38 by ggualerz         ###   ########.fr        #
+#    Updated: 2024/03/02 15:26:22 by ggualerz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCES  = 	main.c \
 			parser/parser.c parser/parser_args.c parser/parser_attributes.c parser/parser_colors.c parser/parser_utils.c parser/parser_utils_lst.c parser/parser_map.c\
-			raycasting/init.c raycasting/raycasting.c
+			render/init.c render/raycasting.c render/init.c
 NAME     = cub3d
 OBJECTS  = ${SOURCES:.c=.o}
 
