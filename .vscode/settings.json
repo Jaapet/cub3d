@@ -9,6 +9,7 @@
 		"philo.h": "c",
 		"pthread.h": "c",
 		"stdio.h": "c",
-		"numbers": "c"
+		"numbers": "c",
+		"cub3d.h": "c"
 	}
 }

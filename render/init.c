@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 00:11:56 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/03/02 18:39:56 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:18:49 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_ray(t_apin *data, int x)
 	ft_bzero(&data->ray, sizeof(t_ray));
 	data->ray.camerax = 2 * x / (double)WIDTH - 1;
 	data->ray.dirx = data->player.dirx + data->player.planex * data->ray.camerax;
-	data->ray.diry = data->player.dirx + data->player.planey * data->ray.camerax;
+	data->ray.diry = data->player.diry + data->player.planey * data->ray.camerax;
 	data->ray.mapx = (int)data->player.posx;
 	data->ray.mapy = (int)data->player.posy;
 	data->ray.deltax = fabs(1 / data->ray.dirx);
@@ -61,7 +61,7 @@ void	init_dda(t_apin *data)
 	else
 	{
 		data->ray.stepx = 1;
-		data->ray.distx = (data->ray.mapx + 1 - data->player.posx) * data->ray.deltax;
+		data->ray.distx = (data->ray.mapx + 1.0 - data->player.posx) * data->ray.deltax;
 	}
 	if (data->ray.diry < 0)
 	{
@@ -71,6 +71,6 @@ void	init_dda(t_apin *data)
 	else
 	{
 		data->ray.stepy = 1;
-		data->ray.disty = (data->ray.mapy + 1 - data->player.posy) * data->ray.deltay;
+		data->ray.disty = (data->ray.mapy + 1.0 - data->player.posy) * data->ray.deltay;
 	}
 }

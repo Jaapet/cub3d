@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/02 17:34:17 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:51:14 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "./mlx/mlx.h"
 # include "./libft/includes/libft.h"
 
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 1000
+# define HEIGHT 700
 
 typedef char* t_path;
 typedef int  t_color;
@@ -96,6 +96,8 @@ typedef struct s_player
 	/*----vector of the camera plane----*/
 	double	planex;
 	double	planey;
+
+	bool	moved;
 }	t_player;
 
 typedef struct s_apin
@@ -126,6 +128,7 @@ typedef struct s_apin
 	void	*mlx;
 	void	*win;
 	t_img	*img;
+	bool	keys[6];
 
 	
 
@@ -137,6 +140,11 @@ void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
 void	raycasting(t_apin *data);
 int		get_pixel(t_img *img, int x, int y);
+int		key_press(int key_num, t_apin *data);
+
+void	move(t_apin *data);
+//void	rotl(t_apin *data);
+//void	rotr(t_apin *data);
 
 # include "./parser/parser.h"
 //PARSER
