@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:27:01 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/07 15:01:14 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:27:18 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,7 @@ void	get_texture(t_apin *data, t_img *img, t_path path)
 {
 	img->img = mlx_xpm_file_to_image(data->mlx, path, &img->width, &img->height);
 	if (!img->img)
-	{
-		printf("%s\n", path);
-		//ft_error("Error :\n\033[41mCan't open some ressources\033[0m\n");
-	}
+		ft_perror("Can't open image.");
 	img->add = mlx_get_data_addr(img->img, &img->bpp, &img->line_len, &img->line_num);
 }
 
@@ -97,6 +94,12 @@ void	init_texture(t_apin *data)
 {
 	data->i_wall_n = ft_calloc(1, sizeof(t_img));
 	get_texture(data, data->i_wall_n, data->p_wall_n);
+	data->i_wall_s = ft_calloc(1, sizeof(t_img));
+	get_texture(data, data->i_wall_s, data->p_wall_s);
+	data->i_wall_e = ft_calloc(1, sizeof(t_img));
+	get_texture(data, data->i_wall_e, data->p_wall_e);
+	data->i_wall_w = ft_calloc(1, sizeof(t_img));
+	get_texture(data, data->i_wall_w, data->p_wall_w);
 }
 
 int	main(int ac, char **av)

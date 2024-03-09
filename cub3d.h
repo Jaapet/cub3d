@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/07 15:51:14 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:25:16 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void	move(t_apin *data);
 
 # include "./parser/parser.h"
 //PARSER
+void ft_perror(char *str);
 bool ft_parser(int ac, char **av, t_apin *data);
 
 #endif

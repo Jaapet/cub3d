@@ -1,8 +1,7 @@
-  NO ./texture.xpm
-
-SO ./texture.xpm
-WE ./texture.xpm
-EA ./texture.xpm
+NO ./texturen.xpm
+SO ./textures.xpm
+WE ./texturew.xpm
+EA ./texturee.xpm
 
 F 255,0,255
 C 0,255,0

@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:11:15 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/03/07 18:23:51 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:35:34 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,30 @@ void	set_fc(t_apin *data, int x)
 	}
 }
 
+t_img	*get_wall(t_apin *data)
+{
+	if (data->ray.side && data->ray.stepy < 0)
+		return (data->i_wall_n);
+	if (data->ray.side && data->ray.stepy > 0)
+		return (data->i_wall_s);
+	if (!data->ray.side && data->ray.stepx < 0)
+		return (data->i_wall_w);
+	if (!data->ray.side && data->ray.stepx > 0)
+		return (data->i_wall_e);
+	return (data->i_wall_n);
+}
+
 void	set_column(t_apin *data, int x)
 {
 	int	y;
 	double	step;
 	double	y_texture;
+	t_img	*texture;
 
+	texture = get_wall(data);
 	set_fc(data, x);
 	y_texture = 0;
-	step = (double)((double)data->i_wall_n->height / (double)(data->ray.end - data->ray.start));
+	step = (double)((double)texture->height / (double)(data->ray.end - data->ray.start));
 	if (data->ray.start < 0)
 		y_texture = step * data->ray.start * -1;
 	if (data->ray.start < 0)
@@ -92,7 +107,7 @@ void	set_column(t_apin *data, int x)
 	{
 		if (y >= HEIGHT - 1)
 			break ;
-		set_pixel(data->img, x, y, get_pixel(data->i_wall_n, data->ray.wall_x * data->i_wall_n->width, y_texture));
+		set_pixel(data->img, x, y, get_pixel(texture, data->ray.wall_x * texture->width, y_texture));
 		y++;
 		y_texture += step;
 	}

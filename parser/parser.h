@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:41:09 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/15 18:53:39 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:25:09 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_mapls_free(t_map_lst *lst);
 //Utils
 bool ft_is_begin_of_map(char *gnl_str);
 size_t	ft_strlcpy_map(char *dst, const char *src, size_t size);
-void ft_perror(char *str);
 
 
 bool ft_parser_args(int ac, char** av, t_parser *parser_data);
