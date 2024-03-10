@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/09 17:25:16 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:05:48 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,15 @@
 # include "./mlx/mlx.h"
 # include "./libft/includes/libft.h"
 
+
 # define WIDTH 1000
 # define HEIGHT 700
+# define MOVESPEED 0.08
+# define ROTSPEED 0.1
 
-typedef char* t_path;
-typedef int  t_color;
-typedef char** t_map;
-typedef struct s_pos{
-	int	x;
-	int y;
-} t_pos;
+typedef char*	t_path;
+typedef int		t_color;
+typedef char**	t_map;
 
 typedef struct s_img
 {
@@ -74,7 +73,6 @@ typedef struct s_ray
 	/*----wall hit----*/
 	bool	hit;//wall hit
 	bool	side;//NS = true, EW = false;
-
 	/*----draw info----*/
 	int		start;
 	int		end;
@@ -123,32 +121,28 @@ typedef struct s_apin
 	char		start_ori; //N S E W
 	t_player	player;
 	t_ray		ray;
-	
-	//mlx
-	void	*mlx;
-	void	*win;
-	t_img	*img;
-	bool	keys[6];
-
-	
-
+//mlx
+	void		*mlx;
+	void		*win;
+	t_img		*img;
+	bool		keys[6];
 }	t_apin;
 
 /*----RAYCASTING----*/
 void	init_player_dir(t_apin *data);
 void	init_ray(t_apin *data, int x);
 void	init_dda(t_apin *data);
+void	init_texture(t_apin *data);
+void	play_mlx(t_apin *data);
 void	raycasting(t_apin *data);
-int		get_pixel(t_img *img, int x, int y);
-int		key_press(int key_num, t_apin *data);
+void	set_column(t_apin *data, int x);
 
 void	move(t_apin *data);
-//void	rotl(t_apin *data);
-//void	rotr(t_apin *data);
-
+void	rotl(t_apin *data);
+void	rotr(t_apin *data);
 # include "./parser/parser.h"
 //PARSER
-void ft_perror(char *str);
-bool ft_parser(int ac, char **av, t_apin *data);
+void	ft_perror(char *str);
+bool	ft_parser(int ac, char **av, t_apin *data);
 
 #endif

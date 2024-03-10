@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:16:35 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/02 19:02:18 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:07:11 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void ft_get_player_pos(t_apin *data)
 			{
 				data->player.posx = i + 0.5;
 				data->player.posy = j + 0.5;
+				data->map[j][i] = '0';
 				break;
 			}
 			i++;
