@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:09:58 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/02 18:16:32 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:20:44 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*Print text in fd 2*/
 void ft_perror(char *str)
 {
+	write(2, &"Error\n", 6);
 	write(2, str, ft_strlen(str));
 	write(2, &"\n", 1);
 }

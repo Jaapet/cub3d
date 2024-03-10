@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_attributes.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:23:37 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/02 18:22:39 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:24:07 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static bool ft_valid_attrib(t_parser *parser, t_apin *data, char *cur_attrib, ch
 			return(true);
 		}
 		else
-			return(ft_perror("invalid texture file"), false);
+		{
+			ft_perror("invalid texture file");
+			exit(1);
+		}
 	}
 }
 /*Search the current attribute of the GNL line, if a non duplicate attribute is found put a flag to true and return true, else return false*/
