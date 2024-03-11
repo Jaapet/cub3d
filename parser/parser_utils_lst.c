@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils_lst.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggualerz <ggualerz@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 16:16:27 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/02/15 16:22:01 by ggualerz         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:25:34 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	ft_maplstadd_back(t_map_lst **lst, t_map_lst *new)
 
 void	ft_mapls_free(t_map_lst *lst)
 {
-	t_map_lst *cur_lst;
-	t_map_lst *next_lst;
+	t_map_lst	*cur_lst;
+	t_map_lst	*next_lst;
 
 	cur_lst = lst;
-	while(cur_lst->next)
+	while (cur_lst->next)
 	{
 		next_lst = cur_lst->next;
 		free(cur_lst->content);

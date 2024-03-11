@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:24:46 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/10 21:05:48 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:50:41 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdbool.h>
 # include "./mlx/mlx.h"
 # include "./libft/includes/libft.h"
-
+# include "./parser/parser.h"
 
 # define WIDTH 1000
 # define HEIGHT 700
@@ -140,7 +140,7 @@ void	set_column(t_apin *data, int x);
 void	move(t_apin *data);
 void	rotl(t_apin *data);
 void	rotr(t_apin *data);
-# include "./parser/parser.h"
+
 //PARSER
 void	ft_perror(char *str);
 bool	ft_parser(int ac, char **av, t_apin *data);

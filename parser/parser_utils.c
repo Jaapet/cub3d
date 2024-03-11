@@ -6,25 +6,25 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:09:58 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/10 21:20:44 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:34:12 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-
 /*Print text in fd 2*/
-void ft_perror(char *str)
+void	ft_perror(char *str)
 {
 	write(2, &"Error\n", 6);
 	write(2, str, ft_strlen(str));
 	write(2, &"\n", 1);
 }
+
 /*Check if the current line is the beginining of the map 
 (it only contain WS and 1 char) return true if its the begining*/
-bool ft_is_begin_of_map(char *gnl_str)
+bool	ft_is_begin_of_map(char *gnl_str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (gnl_str[i])
@@ -33,11 +33,13 @@ bool ft_is_begin_of_map(char *gnl_str)
 			return (false);
 		i++;
 	}
-	if(gnl_str[0] == '\n')
+	if (gnl_str[0] == '\n')
 		return (false);
 	return (true);
 }
-/*modified strncpy for adding white space on empty char, end the str with a ws and start with a ws*/
+
+/*modified strncpy for adding white space on empty char,
+end the str with a ws and start with a ws*/
 size_t	ft_strlcpy_map(char *dst, const char *src, size_t size)
 {
 	size_t	i;

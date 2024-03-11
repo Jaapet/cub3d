@@ -6,135 +6,52 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:16:35 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/10 19:07:11 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:41:11 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-static bool ft_is_player(char c)
-{
-	if(c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (true);
-	return(false);
-}
-static bool ft_is_player_floor_wall(char c)
-{
-	if(c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == '1')
-		return (true);
-	return(false);
-}
-static bool ft_map_illegal_char(t_apin *data)
-{
-		size_t i;
-	size_t j;
 
-	i = 0;
-	j = 0;
-	while (data->map[j])
-	{
-		while(data->map[j][i])
-		{
-			if(!(ft_is_player_floor_wall(data->map[j][i]) || data->map[j][i] == ' '))
-				return(ft_perror("illegal char on the map"),false);
-			i++;
-		}
-		i = 0;
-		j++;
-	}
-	return(true);
-}
-static void ft_get_player_pos(t_apin *data)
+static bool	ft_get_player_ori(t_apin *data)
 {
-	size_t i;
-	size_t j;
-
-	i = 0;
-	j = 0;
-	while (data->map[j])
-	{
-		while(data->map[j][i])
-		{
-			if(ft_is_player(data->map[j][i]))
-			{
-				data->player.posx = i + 0.5;
-				data->player.posy = j + 0.5;
-				data->map[j][i] = '0';
-				break;
-			}
-			i++;
-		}
-		i = 0;
-		j++;
-	}
-}
-static bool ft_map_is_closed(t_apin *data)
-{
-	size_t i;
-	size_t j;
-
-	i = 0;
-	j = 0;
-	while (data->map[j])
-	{
-		while(data->map[j][i])
-		{
-			if(ft_is_player(data->map[j][i]) || data->map[j][i] == '0')
-			{
-				if(ft_is_player_floor_wall(data->map[j][i - 1]) == false)
-					return(false);
-				if(ft_is_player_floor_wall(data->map[j][i + 1]) == false)
-					return(false);
-				if(ft_is_player_floor_wall(data->map[j - 1][i]) == false)
-					return(false);
-				if(ft_is_player_floor_wall(data->map[j + 1][i]) == false)
-					return(false);
-			}				
-			i++;
-		}
-		i = 0;
-		j++;
-	}
-	return(true);
-}
-static bool ft_get_player_ori(t_apin *data)
-{
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	data->start_ori = '\0';
 	i = 0;
 	j = 0;
 	while (data->map[j])
 	{
-		while(data->map[j][i])
+		while (data->map[j][i])
 		{
-			if(ft_is_player(data->map[j][i]))
+			if (ft_is_player(data->map[j][i]))
 			{
-				if(data->start_ori == '\0')
+				if (data->start_ori == '\0')
 					data->start_ori = data->map[j][i];
 				else
-					return(ft_perror("duplicated player"), false);
-			}				
+					return (ft_perror("duplicated player"), false);
+			}
 			i++;
 		}
 		i = 0;
 		j++;
 	}
 	if (data->start_ori == '\0')
-		return(ft_perror("no player found"), false);
-	return(true);
+		return (ft_perror("no player found"), false);
+	return (true);
 }
-static void ft_map_build(t_apin *data, t_parser *parser)
-{
-	t_map_lst *cur_lst;
-	size_t i;
 
-	data->map = ft_calloc(data->height + 2, sizeof (char*));
+static void	ft_map_build(t_apin *data, t_parser *parser)
+{
+	t_map_lst	*cur_lst;
+	size_t		i;
+
+	data->map = ft_calloc(data->height + 2, sizeof(char *));
 	data->map[0] = ft_calloc(data->width + 2, sizeof(char));
 	ft_memset(data->map[0], ' ', data->width + 1);
 	cur_lst = parser->map_lst;
 	i = 1;
-	while(cur_lst != NULL)
+	while (cur_lst != NULL)
 	{
 		data->map[i] = ft_calloc(data->width + 2, sizeof(char));
 		ft_strlcpy_map(data->map[i], cur_lst->content, data->width + 1);
@@ -143,17 +60,17 @@ static void ft_map_build(t_apin *data, t_parser *parser)
 	}
 	data->map[i] = ft_calloc(data->width + 2, sizeof(char));
 	ft_memset(data->map[i], ' ', data->width + 1);
-	ft_mapls_free(parser->map_lst);	
+	ft_mapls_free(parser->map_lst);
 }
 
-static void ft_map_get_width_height(t_apin *data, t_parser *parser)
+static void	ft_map_get_width_height(t_apin *data, t_parser *parser)
 {
-	size_t i;
-	t_map_lst *cur_lst;
+	size_t		i;
+	t_map_lst	*cur_lst;
 
 	i = 1;
 	cur_lst = parser->map_lst;
-	while(cur_lst != NULL)
+	while (cur_lst != NULL)
 	{
 		i++;
 		cur_lst = cur_lst->next;
@@ -161,23 +78,23 @@ static void ft_map_get_width_height(t_apin *data, t_parser *parser)
 	data->height = i;
 	i = 0;
 	cur_lst = parser->map_lst;
-	while(cur_lst != NULL)
+	while (cur_lst != NULL)
 	{
-		if(ft_strlen(cur_lst->content) > i)
+		if (ft_strlen(cur_lst->content) > i)
 			i = ft_strlen(cur_lst->content);
 		cur_lst = cur_lst->next;
 	}
 	data->width = i;
 }
+
 /*GNL the map into a list*/
 static void	ft_map_to_lst(t_parser *parser)
 {
-	char *gnl;
+	char	*gnl;
 
 	parser->map_lst = ft_maplstnew(parser->last_gnl);
 	gnl = get_next_line(parser->fd);
-	
-	while(gnl != NULL)
+	while (gnl != NULL)
 	{
 		ft_maplstadd_back(&parser->map_lst, ft_maplstnew(gnl));
 		gnl = get_next_line(parser->fd);
@@ -185,21 +102,17 @@ static void	ft_map_to_lst(t_parser *parser)
 }
 
 /*Build the map in a 2D array*/
-bool ft_parser_map(t_apin *data, t_parser *parser)
+bool	ft_parser_map(t_apin *data, t_parser *parser)
 {
 	ft_map_to_lst(parser);
 	ft_map_get_width_height(data, parser);
 	ft_map_build(data, parser);
-	for(size_t i = 0; data->map[i]; i++)
-	{
-		printf("|%s|\n", data->map[i]);
-	}
-	if(ft_get_player_ori(data) == false)
-		return(false);
-	if(ft_map_illegal_char(data) == false)
-		return(false);
-	if(ft_map_is_closed(data) == false)
-		return(ft_perror("map not closed"), false);
+	if (ft_get_player_ori(data) == false)
+		return (false);
+	if (ft_map_illegal_char(data) == false)
+		return (false);
+	if (ft_map_is_closed(data) == false)
+		return (ft_perror("map not closed"), false);
 	ft_get_player_pos(data);
 	return (true);
 }
