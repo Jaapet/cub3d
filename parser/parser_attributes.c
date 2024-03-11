@@ -6,7 +6,7 @@
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:23:37 by ggualerz          #+#    #+#             */
-/*   Updated: 2024/03/11 14:30:12 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:20:12 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,14 @@ static bool	ft_valid_attrib(
 	t_parser *parser, t_apin *data, char *cur_attrib, char *gnl_str)
 {
 	int	tmp_fd;
+	int	i;
 
-	if (gnl_str[0] == 'F' || gnl_str[0] == 'C')
+	i = 0;
+	while (gnl_str[i] == ' ')
+		i++;
+	if (gnl_str[i] == 'F' || gnl_str[i] == 'C')
 	{
-		if (ft_check_get_color(parser, data, cur_attrib, gnl_str) == true)
+		if (ft_check_get_color(parser, data, cur_attrib, gnl_str + i) == true)
 			return (true);
 		else
 			return (ft_perror("invalid color"), false);
@@ -53,10 +57,7 @@ static bool	ft_valid_attrib(
 			return (true);
 		}
 		else
-		{
-			ft_perror("invalid texture file");
-			exit(1);
-		}
+			return (ft_perror("invalid texture file"), exit(1), false);
 	}
 }
 

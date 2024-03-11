@@ -6,7 +6,7 @@
 #    By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/11 17:43:32 by ggualerz          #+#    #+#              #
-#    Updated: 2024/03/11 14:44:09 by ndesprez         ###   ########.fr        #
+#    Updated: 2024/03/11 15:29:11 by ndesprez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ LIBFT      = $(LIBFT_PATH)/libft.a
 MLX_PATH = ./mlx
 MLX      = $(MLX_PATH)/libmlx.a
 
-CFLAGS     = -Wall -Wextra -Werror -g #-fsanitize=address
-LDFLAGS    = -L${LIBFT_PATH} -L${MLX_PATH} -lft   -lm -lbsd -lX11 -lXext #-lmlx
+CFLAGS     = -Wall -Wextra -Werror -g -fsanitize=address
+LDFLAGS    = -L${LIBFT_PATH} -L${MLX_PATH} -lft   -lm -lbsd -lX11 -lXext
 
 
 .c.o:
@@ -48,7 +48,5 @@ clean:
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
 	rm -f $(NAME)
-
-re: fclean all
 
 re: fclean all
